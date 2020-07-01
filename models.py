@@ -1,31 +1,33 @@
 from flask_sqlalchemy import SQLAlchemy
+from random import randint
 db = SQLAlchemy()
 
 class Family:
 
     def __init__(self, last_name):
+        
         self.last_name = last_name
         # example list of members
         self._members = [{
             "id": 1,
             "first_name": "John",
             "last_name": "Jackson",
-            "age": 30,
-            "lucky_numbers": [7, 12, 15]
+            "age": 33,
+            "lucky_numbers": [7, 13, 22]
         },
             {
                 "id": 2,
-                "first_name": "Diego",
+                "first_name": "Jane",
                 "last_name": "Jackson",
-                "age": 25,
-                "lucky_numbers": [13, 46, 79]
+                "age": 35,
+                "lucky_numbers": [10, 14, 3]
         },
             {
                 "id": 3,
-                "first_name": "Luis",
+                "first_name": "Jimmy",
                 "last_name": "Jackson",
-                "age": 35,
-                "lucky_numbers": [54, 101, 1]
+                "age": 5,
+                "lucky_numbers": [1]
         }]
 
     # read-only: Use this method to generate random members ID's when adding members into the list
@@ -50,7 +52,8 @@ class Family:
     def get_member(self, id):
         ## you have to implement this method
         ## loop all the members and return the one with the given id
-        pass
+        return list(self._members)
+       
 
-    def get_all_members(self, id):
+    def get_all_members(self):
         return self._members
