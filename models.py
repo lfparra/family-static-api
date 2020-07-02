@@ -37,23 +37,27 @@ class Family:
     def add_member(self, member):
         ## you have to implement this method
         ## append the member to the list of _members
-        pass
+        self._members.append(member)
 
-    def delete_member(self, id):
+    def delete_member(self, member_id):
         ## you have to implement this method
         ## loop the list and delete the member with the given id
-        pass
+        member = self.get_member(member_id)
+        self._members.remove(member)
+        return True
 
-    def update_member(self, id, member):
+    def update_member(self, member_id, update):
         ## you have to implement this method
         ## loop the list and replace the memeber with the given id
-        pass
+        up_member = self.get_member(member_id)
+        up_member = up_member.update(update)
+        return up_member
 
-    def get_member(self, id):
+    def get_member(self, member_id):
         ## you have to implement this method
         ## loop all the members and return the one with the given id
-        return list(self._members)
+        member = list(filter(lambda member: member["id"] == member_id, self._members))
+        return member[0] if len(member) > 0 else None
        
-
     def get_all_members(self):
         return self._members
